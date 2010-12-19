@@ -1,5 +1,5 @@
 %define upstream_name    Padre-Plugin-SpellCheck
-%define upstream_version 1.1.2
+%define upstream_version 1.21
 
 Name:       perl-%{upstream_name}
 Version:    %perl_convert_version %{upstream_version}
@@ -15,6 +15,7 @@ BuildRequires: perl(Class::XSAccessor)
 BuildRequires: perl(File::Basename)
 BuildRequires: perl(File::Spec::Functions)
 BuildRequires: perl(Module::Util)
+BuildRequires: perl(Module::Install)
 BuildRequires: perl(Padre)
 BuildRequires: perl(Test::More)
 BuildRequires: perl(Text::Aspell)
@@ -37,16 +38,15 @@ Of course, you need to have the aspell binary and dictionnary installed.
 %setup -q -n %{upstream_name}-%{upstream_version}
 
 %build
-%{__perl} Makefile.PL INSTALLDIRS=vendor
-
-%{make}
+%{__perl} Build.PL installdirs=vendor
+./Build
 
 %check
-%{make} test
+./Build test
 
 %install
 rm -rf %buildroot
-%makeinstall_std
+./Build install destdir=%{buildroot}
 
 %clean
 rm -rf %buildroot
