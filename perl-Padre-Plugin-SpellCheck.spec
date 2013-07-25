@@ -1,15 +1,15 @@
 %define upstream_name    Padre-Plugin-SpellCheck
-%define upstream_version 1.21
+%define upstream_version 1.32
 
 Name:		perl-%{upstream_name}
-Version:	%perl_convert_version %{upstream_version}
-Release:	3
+Version:	%perl_convert_version 1.32
+Release:	1
 
 Summary:	Check spelling in Padre
 License:	GPL+ or Artistic
 Group:		Development/Perl
 Url:		http://search.cpan.org/dist/%{upstream_name}
-Source0:	http://www.cpan.org/modules/by-module/Padre/%{upstream_name}-%{upstream_version}.tar.gz
+Source0:	http://www.cpan.org/modules/by-module/Padre/Padre-Plugin-SpellCheck-1.32.tar.gz
 
 BuildRequires:	perl-devel
 BuildRequires:	perl(Class::XSAccessor)
@@ -68,3 +68,4 @@ perl Build.PL installdirs=vendor
 
 * Thu Sep 17 2009 cpan2dist 1.1.2-1mdv
 - initial mdv release, generated with cpan2dist
+
