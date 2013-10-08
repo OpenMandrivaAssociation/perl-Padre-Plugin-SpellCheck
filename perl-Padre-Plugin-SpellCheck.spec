@@ -11,17 +11,20 @@ Group:		Development/Perl
 Url:		http://search.cpan.org/dist/%{upstream_name}
 Source0:	http://www.cpan.org/modules/by-module/Padre/Padre-Plugin-SpellCheck-%{upstream_version}.tar.gz
 
-BuildRequires:	perl-devel
+BuildRequires: perl-devel
 BuildRequires: perl(Test::Requires)
-BuildRequires:	perl(Class::XSAccessor)
-BuildRequires:	perl(File::Basename)
-BuildRequires:	perl(File::Spec::Functions)
-BuildRequires:	perl(Module::Util)
-BuildRequires:	perl(Module::Install)
-BuildRequires:	perl(Padre)
-BuildRequires:	perl(Test::More)
-BuildRequires:	perl(Text::Aspell)
-BuildRequires:	perl(Module::Build::Compat)
+BuildRequires: perl(Class::Accessor)
+BuildRequires: perl(Class::XSAccessor)
+BuildRequires: perl(File::Basename)
+BuildRequires: perl(File::Spec::Functions)
+BuildRequires: perl(Module::Util)
+BuildRequires: perl(Module::Install)
+BuildRequires: perl(Padre)
+BuildRequires: perl(Test::More)
+BuildRequires: perl(Text::Aspell)
+BuildRequires: perl(Try::Tiny)
+BuildRequires: perl(Module::Build::Compat)
+BuildRequires: x11-server-xvfb
 BuildArch:	noarch
 
 %description
@@ -49,7 +52,7 @@ xvfb-run make test
 %makeinstall_std
 
 %files
-%doc LICENSE README Changes
+%doc README Changes
 %{_mandir}/man3/*
 %{perl_vendorlib}/*
 
