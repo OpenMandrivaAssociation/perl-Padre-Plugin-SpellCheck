@@ -1,17 +1,18 @@
 %define upstream_name    Padre-Plugin-SpellCheck
-%define upstream_version 1.21
+%define upstream_version 1.32
 
 Name:		perl-%{upstream_name}
 Version:	%perl_convert_version %{upstream_version}
-Release:	3
+Release:	1
 
 Summary:	Check spelling in Padre
 License:	GPL+ or Artistic
 Group:		Development/Perl
 Url:		http://search.cpan.org/dist/%{upstream_name}
-Source0:	http://www.cpan.org/modules/by-module/Padre/%{upstream_name}-%{upstream_version}.tar.gz
+Source0:	http://www.cpan.org/modules/by-module/Padre/Padre-Plugin-SpellCheck-%{upstream_version}.tar.gz
 
 BuildRequires:	perl-devel
+BuildRequires: perl(Test::Requires)
 BuildRequires:	perl(Class::XSAccessor)
 BuildRequires:	perl(File::Basename)
 BuildRequires:	perl(File::Spec::Functions)
@@ -38,14 +39,14 @@ Of course, you need to have the aspell binary and dictionnary installed.
 %setup -q -n %{upstream_name}-%{upstream_version}
 
 %build
-perl Build.PL installdirs=vendor
-./Build
+perl Makefile.PL INSTALLDIRS=vendor
+%make
 
 %check
-./Build test
+xvfb-run make test
 
 %install
-./Build install destdir=%{buildroot}
+%makeinstall_std
 
 %files
 %doc LICENSE README Changes
@@ -68,3 +69,4 @@ perl Build.PL installdirs=vendor
 
 * Thu Sep 17 2009 cpan2dist 1.1.2-1mdv
 - initial mdv release, generated with cpan2dist
+
