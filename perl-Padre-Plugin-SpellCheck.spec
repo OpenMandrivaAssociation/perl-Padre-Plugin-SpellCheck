@@ -1,15 +1,13 @@
 %define upstream_name    Padre-Plugin-SpellCheck
-%define upstream_version 1.33
-
 Name:		perl-%{upstream_name}
-Version:	%{upstream_version}
-Release:	1
+Version:	1.33
+Release:	2
 
 Summary:	Check spelling in Padre
 License:	GPL+ or Artistic
 Group:		Development/Perl
 Url:		https://padre.perlide.org/trac/wiki/PadrePluginSpellCheck
-Source0:	https://cpan.metacpan.org/authors/id/B/BO/BOWTIE/Padre-Plugin-SpellCheck-%{upstream_version}.tar.gz
+Source0:	https://cpan.metacpan.org/authors/id/B/BO/BOWTIE/Padre-Plugin-SpellCheck-%{version}.tar.gz
 
 BuildRequires:	make
 BuildRequires: perl-devel
@@ -40,7 +38,7 @@ for more information.
 Of course, you need to have the aspell binary and dictionnary installed.
 
 %prep
-%setup -q -n %{upstream_name}-%{upstream_version}
+%setup -q -n %{upstream_name}-%{version}
 
 %build
 perl Makefile.PL INSTALLDIRS=vendor
